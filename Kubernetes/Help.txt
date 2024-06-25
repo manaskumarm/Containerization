@@ -1,0 +1,35 @@
+Download minikube
+	https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+Download kubectl
+	https://kubernetes.io/docs/tasks/tools/
+	
+Katacoda for playground
+kubectl rerefnce docs 
+--------------------------
+Start your cluster	
+Open Powershell in Administrator mode:
+	minikube start
+
+	minikube dashboard
+
+--------------
+Interact with your cluster
+	kubectl get po -A
+
+minikube dashboard
+
+Setup:
+	First a user needs to be invited from CarrierAppsHub from a Group. Then user click on CArrierSSO, provide system credentials and enter into system. Please find the attached document how to browse applications. 
+	
+Feature(Soft delete users):
+	We usually invite users from a group. A user can be mapped to multiple groups. If a user belongs to only one group and Admin removes the user from a group. 
+
+
+We can use Kubernetes in local 2 ways. First, we can install minikube manually and start the cluster, secondly with docker. Enable kubernetes in Docker desktop. 
+If you have already installed kubectl and it is pointing to some other environment, such as minikube or a GKE cluster, ensure you change the context so that kubectl is pointing to docker-desktop:
+
+>kubectl config get-contexts
+>kubectl config use-context docker-desktop
+ 
+To see Kubernetes dashbaord
+> kubectl proxy
