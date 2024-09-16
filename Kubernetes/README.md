@@ -5,5 +5,7 @@ Kubernetes, also known as K8s, is an open source system for automating deploymen
 
 
 # Commands
-![image](https://github.com/user-attachments/assets/337c66eb-43ab-4222-8173-ee817de45b44)
+
+![image](https://github.com/user-attachments/assets/7daa4bce-e077-404d-acc0-cbb3489c2022)
+
 
