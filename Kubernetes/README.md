@@ -297,3 +297,110 @@ stern <pod-name>
 k9s: Interactive Kubernetes CLI tool
 
 k9s
+
+# Best Practices
+
+**Use Multi-Master Setup**
+
+Run at least 3 control plane nodes for redundancy.
+
+Distribute nodes across multiple availability zones (AZs).
+
+**Use etcd Backups**
+
+Regularly back up etcd to prevent data loss.
+
+Example backup command:  ETCDCTL_API=3 etcdctl snapshot save backup.db
+
+✅ Separate Control Plane & Worker Nodes
+
+Keep API server, etcd, and controllers isolated from worker nodes.
+
+**Use Role-Based Access Control (RBAC)**
+
+Grant least privilege access.
+
+Check permissions: kubectl get roles,rolebindings --all-namespaces
+
+**Restrict API Access**
+
+Disable anonymous access to the API server: --anonymous-auth=false
+
+Use OIDC authentication (e.g., AWS IAM, Azure AD).
+
+**Enable Network Policies**
+
+Restrict pod communication using NetworkPolicy
+
+**Scan Images for Vulnerabilities**
+
+Use Trivy, Aqua, or Snyk for container security scanning
+
+**Use Secrets Properly**
+
+Store secrets in Kubernetes Secrets (not ConfigMaps!).
+
+Encrypt secrets using: --encryption-provider-config=/etc/kubernetes/encryption-config.yaml
+
+**Use Requests & Limits for Pods**
+
+Prevent a single pod from consuming all CPU/memory
+
+**Enable Horizontal Pod Autoscaler (HPA)**
+
+Automatically scale pods based on CPU or memory usage.
+
+**Enable Cluster Autoscaler**
+
+Automatically add or remove worker nodes based on demand.
+
+--cluster-autoscaler-enabled=true
+
+**Centralized Logging**
+
+Use Fluentd, ELK (Elasticsearch + Logstash + Kibana), Loki, or EFK.
+
+Stream logs to external storage instead of relying on kubectl logs.
+
+**Use Prometheus & Grafana**
+
+Collect metrics using Prometheus.
+
+Visualize dashboards using Grafana.
+
+**Monitor Kubernetes Events**
+
+Use New Relic, Datadog, or Azure Monitor for real-time event tracking.
+
+**Use Ingress Controllers for External Traffic**
+
+Use Nginx Ingress, Traefik, or AWS ALB Ingress.
+
+**Enable Service Mesh for Microservices**
+
+Use Istio or Linkerd for secure communication between microservices.
+
+**Optimize DNS Resolution**
+
+Use ndots:5 in DNS settings to improve resolution speed.
+
+**Use Persistent Volumes (PV) & Persistent Volume Claims (PVC)**
+
+Ensure data persistence for databases.
+
+**Regularly Backup Persistent Volumes**
+
+Use Velero for disaster recovery
+
+**Use Rolling Updates (Avoid Downtime)**
+
+Deploy apps gradually instead of stopping all pods
+
+**Use Canary Deployments for Testing**
+
+Deploy small batches of new code before full rollout.
+
+**Use Helm for Deployments**
+
+Helm simplifies app deployment using templates. helm install my-app ./my-app-chart
+
